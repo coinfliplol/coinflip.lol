@@ -17,6 +17,8 @@ We believe in the power of collaboration and welcome contributions from develope
 
 ## Getting Started
 
+(Need to submit or request the contract for your token/game) then:
+
 1. Clone this repository to your local machine.
 2. Navigate to the `config/token` directory to add your token configuration.
 3. Similarly, if you are adding a new game, navigate to the `config/game` directory to integrate your game.
