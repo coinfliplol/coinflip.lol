@@ -1,0 +1,354 @@
+
+.uniswap {
+    font-weight: bold;
+    margin-right: 0px;
+}
+
+.oklinks {
+    text-align: center;
+}
+
+.unilink {
+    color:#f700ff;
+}
+
+.unilink:hover {
+    color:#fff;
+}
+
+.discordlink {
+    color:rgb(175, 28, 204);
+}
+
+.discordlink:hover {
+    color:#fff;
+}
+
+.claimtokens {
+    font-size: 49px;
+    height: 111px;
+    width: 100%;
+}
+
+.table {
+    --bs-table-striped-color: #00ffa2;
+}
+
+#rewardpool {
+    font-size:69px;
+    font-weight:bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:#00ffa2;
+}
+
+#rewardpoolUSD {
+    margin-top: 10px;
+    font-size:48px;
+    font-weight:bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+}
+
+.rewards {
+    font-size: 18px;
+    font-weight:bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#connectWallet, #disconnectWallet {
+    margin-top: 0px;
+}
+
+#coinContainer {
+    perspective: 1000px;
+}
+
+#coin {
+    width: 256px;
+    height: 256px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+    transform: rotateX(0deg);
+}
+
+.coin-side {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 20px;
+    color: #fff;
+    background-color: #0026ff;
+}
+
+#coin.flip {
+    animation: flip 1.5s forwards;
+}
+
+.front {
+    transform: rotateY(0deg);
+    background-image: url('/config/token/ok/head.png'); /* Adjust path as needed */
+    background-size: cover; /* Cover the entire surface of the div */
+}
+
+.back {
+    transform: rotateY(180deg);
+    background-image: url('/config/token/ok/tail.png'); /* Adjust path as needed */
+    background-size: cover; /* Cover the entire surface of the div */
+}
+
+@keyframes flip {
+    from { transform: rotateY(0deg); }
+    to { transform: rotateY(3600deg); }
+}
+
+.winn {
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.userBalancebot {
+    font-weight: bold;
+    font-size: 36px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.userBalancetop {
+    font-size: 69px;
+    font-weight: bold;
+    color: #00ffa2;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#userBalance {
+    font-weight: bold;
+    font-size: 36px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+a {
+    
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #00ffa2;
+}
+
+#ticket-info {
+    color: #00ffa2;
+}
+
+main {
+    flex: 1;
+}
+
+/* Buttons and Inputs */
+button,
+input[type="number"] {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+button {
+    cursor: pointer;
+    background: linear-gradient(to right, #6a11cb, #0043b8);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    outline: none;
+    font-weight: bold;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+    vertical-align: text-bottom;
+}
+
+button:hover, button:focus {
+    background: linear-gradient(to right, #2575fc, #6a11cb);
+    transform: scale(1.05);
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.25);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+.lotinfo {
+    text-align: center;
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.ticketinfo {
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:#00ffa2
+}
+
+.titles {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.small {
+    font-size: 13px;
+}
+
+.transax {
+    font-size: 33px;
+    font-weight: bold;
+}
+
+#token-address {
+    padding: 10px;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    border: 3px solid #f700ff;
+}
+
+.CHAIN {
+    color: #0af802c4;
+    font-weight: bold;
+    font-size: 26px;
+}
+
+#sendTokens {
+    width: 100%;
+    height: 69px;
+}
+
+#values {
+    padding: 10px;
+    border: none;
+    font-size: 22px;
+    font-weight: bold;
+    overflow: auto;
+    resize: vertical;
+    color: #047400;
+    border: 3px solid #02b119;
+}
+
+#addresses {
+    padding: 10px;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    overflow: auto;
+    resize: vertical;
+    color: #0050a0;
+    border: 3px solid #0e7ee7;
+}
+
+#txTable {
+    text-align: center;
+    width: 100%;
+}
+
+.coinlol {
+    color:#313131
+}
+
+.playon {
+    font-weight: bold;
+    color: #f01771;
+}
+
+#buyTicket {
+    height:64px;
+    vertical-align: bottom;
+}
+
+#endLottery {
+    height: 40px;
+    background: #032868;
+    font-weight: 600;
+}
+
+#pool-size {
+    color:#a1ff00;
+    font-weight: bold;
+}
+
+#walletInfo {
+    font-weight: bold;
+    background-color: #140836;
+    color: #00bb76;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    text-align: right;
+}
+
+#time-left {
+    color:#e7d90d;
+    font-weight: bold;
+}
+
+input[type="number"] {
+    width: 200px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 33px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Sections */
+h1, h2 {
+    color: #76ff03;
+}
+
+/* Info and Cooldown Display */
+#lottery-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.info-block {
+    margin: 10px 0;
+}
+
+/* Animation and Feedback */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+section {
+    animation: fadeIn 0.5s ease-out;
+}
+
+
+
+/* Media Queries */
+@media (max-width: 768px) {
+    input[type="number"],
+    button {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    input[type="number"] {
+        margin-right: 0;
+    }
+}
