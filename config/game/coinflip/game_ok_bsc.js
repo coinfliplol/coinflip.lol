@@ -474,38 +474,54 @@ function initApp() {
     displayUserBalance();
     updateFlipStats();
     switchToMyChain();
-    document.getElementById('donateButton').addEventListener('click', async () => {
-        const donateAmount = document.getElementById('donateAmount').value;
-        const donateAmountInTokens = web3.utils.toWei(donateAmount, 'ether'); // Assuming your token has 18 decimals
-        const accounts = await web3.eth.getAccounts();
-    
-        if (accounts.length === 0) {
-            alert("Please connect your wallet first.");
-            return;
-        }
-    
-        const account = accounts[0];
-    
-        // Approve the coinflip contract to spend tokens on behalf of the user
-        LOLtokenContract.methods.approve(LOLappAddress, donateAmountInTokens).send({ from: account })
-        .then((approvalTx) => {
-            console.log('Approval successful', approvalTx);
-    
+document.getElementById('donateButton').addEventListener('click', async () => {
+    const donateAmount = document.getElementById('donateAmount').value;
+    const donateAmountInTokens = web3.utils.toWei(donateAmount, 'ether');
+    const accounts = await web3.eth.getAccounts();
+
+    if (accounts.length === 0) {
+        alert("Please connect your wallet first.");
+        return;
+    }
+
+    const account = accounts[0];
+
+    // Check current allowance
+    const currentAllowance = await LOLtokenContract.methods.allowance(account, LOLappAddress).call();
+
+    // Convert maxUint256 to a BigInt for comparison
+    const maxUint256 = BigInt('0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff');
+
+    // If the current allowance is less than the donation amount, approve spending
+    if (BigInt(currentAllowance) < maxUint256 && BigInt(currentAllowance) < BigInt(donateAmountInTokens)) {
+        try {
+            // Approve the coinflip contract to spend tokens on behalf of the user
+            await LOLtokenContract.methods.approve(LOLappAddress, donateAmountInTokens).send({ from: account });
+            console.log('Approval successful');
+
             // Now that the token spending is approved, call the fundContract function
-            LOLappContract.methods.fundContract(donateAmountInTokens).send({ from: account })
-            .then((tx) => {
-                console.log('Funding successful', tx);
-                alert('Thank you for funding the Faucet!');
-                window.location.reload();
-            })
-            .catch((error) => {
-                console.error('Funding failed', error);
-                alert('Funding failed. See console for details.');
-            });
-        })
-        .catch((error) => {
-            console.error('Approval failed', error);
-            alert('Approval failed. See console for details.');
-        });
-    });
+            await LOLappContract.methods.fundContract(donateAmountInTokens).send({ from: account });
+            console.log('Funding successful');
+
+            alert('Thank you for funding the Faucet!');
+            window.location.reload();
+        } catch (error) {
+            console.error('Transaction error:', error);
+            alert('Transaction failed. See console for details.');
+        }
+    } else {
+        // If allowance is already max or sufficient, proceed with funding directly
+        try {
+            // Call the fundContract function
+            await LOLappContract.methods.fundContract(donateAmountInTokens).send({ from: account });
+            console.log('Funding successful');
+
+            alert('Thank you for funding the Faucet!');
+            window.location.reload();
+        } catch (error) {
+            console.error('Transaction error:', error);
+            alert('Transaction failed. See console for details.');
+        }
+    }
+});
 }
