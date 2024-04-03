@@ -87,9 +87,6 @@ function createHeader() {
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="nav-item">
-                                <a class="nav-link" href="https://github.com/coinfliplol/coinflip.lol" target="_blank">Add your Token</a>
-                            </li>
                             </ul>
                             <div class="right-area header-action d-flex align-items-center max-un">
                                 <div id="connectSection">

@@ -91,13 +91,13 @@
 }
 
 .front {
-    transform: rotateY(0deg);
+    transform: rotateY(180deg);
     background-image: url('/config/token/ok/head.png'); /* Adjust path as needed */
     background-size: cover; /* Cover the entire surface of the div */
 }
 
 .back {
-    transform: rotateY(180deg);
+    transform: rotateY(0deg);
     background-image: url('/config/token/ok/tail.png'); /* Adjust path as needed */
     background-size: cover; /* Cover the entire surface of the div */
 }
