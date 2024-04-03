@@ -474,7 +474,7 @@ function initApp() {
     displayUserBalance();
     updateFlipStats();
     switchToMyChain();
-document.getElementById('donateButton').addEventListener('click', async () => {
+    document.getElementById('donateButton').addEventListener('click', async () => {
     const donateAmount = document.getElementById('donateAmount').value;
     const donateAmountInTokens = web3.utils.toWei(donateAmount, 'ether');
     const accounts = await web3.eth.getAccounts();
