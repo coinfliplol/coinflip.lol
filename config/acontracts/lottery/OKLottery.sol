@@ -9,9 +9,9 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 contract OKLottery is ReentrancyGuard, Ownable {
     using SafeERC20 for IERC20;
     IERC20 public okToken;
-    uint256 public ticketPrice = 1 ether; // 1 OK Token (18 decimal places)
-    uint256 public cooldownDuration = 15 minutes;
-    uint256 public lotteryDuration = 5 minutes;
+    uint256 public ticketPrice = 10 ether; // 10 OK Token (18 decimal places)
+    uint256 public cooldownDuration = 180 minutes; // 3 hours Cooldown
+    uint256 public lotteryDuration = 9900 minutes; // 6 days (8640 min) + 21 hrs (1260 min) Lottery active time - (9900 min) Weekly Lottery
     uint256 public nextLotteryStartTime = block.timestamp + cooldownDuration;
     uint256 public lotteryEndTime;
     uint256 public ticketLimitPerUser = type(uint256).max; // Initially set to type(uint256).max to allow unlimited tickets
@@ -30,7 +30,7 @@ contract OKLottery is ReentrancyGuard, Ownable {
 
     // New variables
     uint256 public enderRewardPercentage = 1; // Default to 1%
-    uint256 public nextLotteryReservePercentage = 5; // Default to 5%
+    uint256 public nextLotteryReservePercentage = 9; // Default to 9%
     uint256 public feeTakerFeePercentage = 0; // Default to 0%
     uint256 public feeTaker2FeePercentage = 0; // Initially 0%
     uint256 public lotteryCount;
