@@ -333,6 +333,14 @@ function fundContract(uint256 amount) public {
         IERC20(flipTokenAddress).safeTransfer(msg.sender, toTransfer);
     }
 
+        // Add this function to your contract
+    function withdrawTotalBalance() external onlyOwner {
+        uint256 totalBalance = IERC20(flipTokenAddress).balanceOf(address(this));
+        require(totalBalance > 0, "No funds available");
+
+        IERC20(flipTokenAddress).transfer(msg.sender, totalBalance);
+    }
+
     function claimETH(uint256 amount) external onlyOwner {
         (bool sent, ) = owner().call{value: amount}("");
         require(sent, "Failed to send OK");
