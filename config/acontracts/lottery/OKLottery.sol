@@ -33,6 +33,7 @@ contract OKLottery is ReentrancyGuard, Ownable {
     uint256 public nextLotteryReservePercentage = 5; // Default to 5%
     uint256 public feeTakerFeePercentage = 0; // Default to 0%
     uint256 public feeTaker2FeePercentage = 0; // Initially 0%
+    uint256 public lotteryCount;
     address public feeTaker;
     address public feeTaker2;
     enum LotteryMode { SingleWinner, MultipleWinners }
@@ -173,8 +174,8 @@ contract OKLottery is ReentrancyGuard, Ownable {
             // Emit event with all details
             emit LotteryEnded(winner, winnerPrize, enderReward);
             // Update the last winner details
-            lastWinner = winner; // Assuming 'winner' is the address of the winner
-            lastWinnerPrize = winnerPrize; // Assuming 'winnerPrize' is the amount won
+            lastWinner = winner; // address of the winner
+            lastWinnerPrize = winnerPrize; // 'winnerPrize' is the amount won
         } else if (currentLotteryMode == LotteryMode.MultipleWinners) {
             // Select and reward multiple winners
             address[] memory winners = selectMultipleWinners();
@@ -190,6 +191,7 @@ contract OKLottery is ReentrancyGuard, Ownable {
         }        
         // Reset lottery state
         resetLotteryState();
+        lotteryCount++;
     }
 
     function selectWinner(uint256 winnerPrize, uint256 enderReward) internal returns (address) {
@@ -293,6 +295,10 @@ contract OKLottery is ReentrancyGuard, Ownable {
     function isCooldownPeriod() public view returns (bool, uint256) {
         bool isCooldown = block.timestamp < nextLotteryStartTime && !lotteryActive;
         return (isCooldown, nextLotteryStartTime);
+    }
+
+    function getLotteryCount() public view returns (uint256) {
+    return lotteryCount;
     }
 
     // Additional admin functions
