@@ -236,17 +236,33 @@ const formatter = new Intl.NumberFormat('en-US', {
     maximumFractionDigits: 2, // Ensure no more than two digits after the decimal point.
 });
 
+async function updateFlipStats() {
+    const flipCounter = await LOLappContract.methods.flipCounter().call();
+    const lastWinner = await LOLappContract.methods.lastWinner().call();
+    const lastPrizeAmount = await LOLappContract.methods.lastPrizeAmount().call();
+
+    // Assuming you have these HTML elements
+    document.getElementById('flipNumber').innerText = flipCounter;
+    document.getElementById('lastWinner').innerText = lastWinner;
+    document.getElementById('lastWinnerPrize').innerText = web3.utils.fromWei(lastPrizeAmount, 'ether') + ' [Your Token Symbol]';
+}
+
 async function updateOKUSD() {
     try {
         const prizePool = await LOLappContract.methods.contractBalance().call();
+        const lastprizePool = await LOLappContract.methods.lastPrizeAmount().call();
         const okPriceInUSD = await getOKTokenPriceInUSD();
         const prizePoolInOK = web3.utils.fromWei(prizePool, 'ether');
+        const lastprizePoolOK = web3.utils.fromWei(lastprizePool, 'ether');
+        const lastprizePoolUSD = (lastprizePoolOK * okPriceInUSD).toFixed(2);
         const prizePoolInUSD = (prizePoolInOK * okPriceInUSD).toFixed(2);
         const formattedWinprize = formatter.format(prizePoolInOK);
         const formattedWinprizeUSD = formatter.format(prizePoolInUSD);
+        const formattedlastWinprizeUSD = formatter.format(lastprizePoolUSD);
 
         document.getElementById('rewardpool').textContent = `${formattedWinprize}`;
         document.getElementById('rewardpoolUSD').textContent = `(${formattedWinprizeUSD} USD)`;
+        document.getElementById('lastprizeUSD').textContent = `(${formattedlastWinprizeUSD} USD)`;
     } catch (error) {
         console.error("Failed to fetch coinflip state or convert prize pool:", error);
     }
@@ -454,6 +470,7 @@ function initApp() {
     document.getElementById('checkBalance').addEventListener('click', displayUserBalance);
     document.getElementById('withdraw').addEventListener('click', withdrawWinnings);
     displayUserBalance();
+    updateFlipStats();
     switchToMyChain();
     document.getElementById('donateButton').addEventListener('click', async () => {
         const donateAmount = document.getElementById('donateAmount').value;
