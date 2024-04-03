@@ -276,6 +276,13 @@ async function updateOKUSD() {
     }
 }
 
+async function updateLotterystats() {
+    const lotteryCounter = await LOLappContract.methods.getLotteryCount().call();
+
+    // HTML elements
+    document.getElementById('lotteryNumber').innerText = lotteryCounter;
+}
+
 // Function to check allowance and request approval if necessary
 async function checkAllowanceAndBuyTickets(LOLtokenAddress, LOLappAddress, numberOfTickets) {
     const tokenContract = new web3.eth.Contract(ERC20_ABI, LOLtokenAddress);
@@ -480,6 +487,7 @@ function initApp() {
     switchToMyChain();
     updateLotteryInfo();
     updateOKUSD();
+    updateLotterystats();
     document.getElementById('buyTicket').addEventListener('click', async function() {
         const numberOfTicketsInput = document.getElementById('ticketQuantity'); // Make sure this ID matches your input field
         const numberOfTickets = web3.utils.toBN(numberOfTicketsInput.value);
