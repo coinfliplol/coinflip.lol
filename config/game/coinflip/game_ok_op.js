@@ -298,7 +298,8 @@ async function placeBet(headsTails, amount) {
         // Stop the flip animation
         coin.style.animation = "none";
 
-        // Determine win or loss based on balance change        if (parseFloat(finalBalance) > parseFloat(initialBalance)) {
+        // Determine win or loss based on balance change
+        if (parseFloat(finalBalance) > parseFloat(initialBalance)) {
             coin.style.transform = headsTails === 1 ? "rotateY(180deg)" : "rotateY(0deg)";
             await delay(1000);
             alert("Congratulations, you won!");
