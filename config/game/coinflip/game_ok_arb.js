@@ -244,7 +244,7 @@ async function updateFlipStats() {
     // Assuming you have these HTML elements
     document.getElementById('flipNumber').innerText = flipCounter;
     document.getElementById('lastWinner').innerText = lastWinner;
-    document.getElementById('lastWinnerPrize').innerText = web3.utils.fromWei(lastPrizeAmount, 'ether') + ' [Your Token Symbol]';
+    document.getElementById('lastWinnerPrize').innerText = web3.utils.fromWei(lastPrizeAmount, 'ether') + ' ' + TOKEN_SYMBOL;
 }
 
 async function updateOKUSD() {
@@ -473,7 +473,7 @@ function initApp() {
     displayUserBalance();
     updateFlipStats();
     switchToMyChain();
-    document.getElementById('donateButton').addEventListener('click', async () => {
+document.getElementById('donateButton').addEventListener('click', async () => {
     const donateAmount = document.getElementById('donateAmount').value;
     const donateAmountInTokens = web3.utils.toWei(donateAmount, 'ether');
     const accounts = await web3.eth.getAccounts();
