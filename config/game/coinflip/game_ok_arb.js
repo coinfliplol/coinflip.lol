@@ -456,5 +456,38 @@ function initApp() {
     document.getElementById('withdraw').addEventListener('click', withdrawWinnings);
     displayUserBalance();
     switchToMyChain();
-
+    document.getElementById('donateButton').addEventListener('click', async () => {
+        const donateAmount = document.getElementById('donateAmount').value;
+        const donateAmountInTokens = web3.utils.toWei(donateAmount, 'ether'); // Assuming your token has 18 decimals
+        const accounts = await web3.eth.getAccounts();
+    
+        if (accounts.length === 0) {
+            alert("Please connect your wallet first.");
+            return;
+        }
+    
+        const account = accounts[0];
+    
+        // Approve the coinflip contract to spend tokens on behalf of the user
+        LOLtokenContract.methods.approve(LOLappAddress, donateAmountInTokens).send({ from: account })
+        .then((approvalTx) => {
+            console.log('Approval successful', approvalTx);
+    
+            // Now that the token spending is approved, call the fundContract function
+            LOLappContract.methods.fundContract(donateAmountInTokens).send({ from: account })
+            .then((tx) => {
+                console.log('Funding successful', tx);
+                alert('Thank you for funding the Faucet!');
+                window.location.reload();
+            })
+            .catch((error) => {
+                console.error('Funding failed', error);
+                alert('Funding failed. See console for details.');
+            });
+        })
+        .catch((error) => {
+            console.error('Approval failed', error);
+            alert('Approval failed. See console for details.');
+        });
+    });
 }
