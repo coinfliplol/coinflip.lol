@@ -220,6 +220,12 @@ contract Coinflip is Ownable, ReentrancyGuard {
     event userWithdrawal(address indexed caller, uint256 amount);
     event filpFinshed(uint result);
     event Funded(address indexed funder, uint256 amount);
+    event FlipOccurred(address indexed player, uint256 flipNumber, bool win, uint256 prizeAmount); // Event to emit details of each flip
+    event LastWinnerUpdated(address indexed winner, uint256 prizeAmount); // Optional: Specific event for the last winner update
+
+    uint256 public flipCounter = 0; // Counter for the total number of flips
+    address public lastWinner; // Address of the last winner
+    uint256 public lastPrizeAmount; // Amount won by the last winner
 
     uint256 lastHash;
     uint256 FACTOR = 57896044618658097711785492504343953926634992332820282019728792003956564819968;
@@ -262,6 +268,7 @@ contract Coinflip is Ownable, ReentrancyGuard {
         // Calculate the fee from the bet amount
         uint256 fee = amount.mul(feePercentage).div(100);
         uint256 betAmountAfterFee = amount.sub(fee);
+        uint256 winAmount = 0; // Initialize winAmount
 
         // Transfer the fee to the fee destination address immediately
         IERC20(flipTokenAddress).safeTransferFrom(msg.sender, feeDestinationAddress, fee);
@@ -275,14 +282,24 @@ contract Coinflip is Ownable, ReentrancyGuard {
         uint flipResult = getResult();
         if (flipResult == oneZero) {
             emit filpFinshed(1);
-            uint winAmount = betAmountAfterFee.mul(2);
+            winAmount = betAmountAfterFee.mul(2);
             require(contractBalance >= winAmount, "Contract does not have enough funds");
             contractBalance = contractBalance.sub(winAmount); // Update contract balance
             playerWinnings[msg.sender] = playerWinnings[msg.sender].add(winAmount);
+            // Update the last winner and prize amount
+            lastWinner = msg.sender;
+            lastPrizeAmount = winAmount;
+
+            emit LastWinnerUpdated(msg.sender, winAmount); // Emit event for the last winner update
         } else {
             emit filpFinshed(0);
             // No need to adjust contractBalance here as it's already increased above
         }
+        // Increase flip counter
+        flipCounter++;
+
+        // Emit an event with details of the flip
+        emit FlipOccurred(msg.sender, flipCounter, flipResult == oneZero, winAmount);
     }
 
     function withdrawUserWinnings() public nonReentrant {
