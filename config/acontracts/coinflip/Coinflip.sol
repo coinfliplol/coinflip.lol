@@ -142,7 +142,6 @@ library Address {
 interface IERC20 {
     event Approval(address indexed owner, address indexed spender, uint256 value);
     event Transfer(address indexed from, address indexed to, uint256 value);
-    event Funded(address indexed funder, uint256 amount);
 
     function name() external view returns (string memory);
     function symbol() external view returns (string memory);
@@ -220,6 +219,7 @@ contract Coinflip is Ownable, ReentrancyGuard {
     event logNewProvableQuery(string description);
     event userWithdrawal(address indexed caller, uint256 amount);
     event filpFinshed(uint result);
+    event Funded(address indexed funder, uint256 amount);
 
     uint256 lastHash;
     uint256 FACTOR = 57896044618658097711785492504343953926634992332820282019728792003956564819968;
