@@ -600,6 +600,19 @@ export const OKLOTTERY_CONTRACT_ABI = [
 	},
 	{
 		"inputs": [],
+		"name": "getLotteryCount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
 		"name": "getLotteryState",
 		"outputs": [
 			{
@@ -722,6 +735,19 @@ export const OKLOTTERY_CONTRACT_ABI = [
 				"internalType": "bool",
 				"name": "",
 				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "lotteryCount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
 			}
 		],
 		"stateMutability": "view",
