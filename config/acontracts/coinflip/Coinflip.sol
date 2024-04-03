@@ -142,6 +142,7 @@ library Address {
 interface IERC20 {
     event Approval(address indexed owner, address indexed spender, uint256 value);
     event Transfer(address indexed from, address indexed to, uint256 value);
+    event Funded(address indexed funder, uint256 amount);
 
     function name() external view returns (string memory);
     function symbol() external view returns (string memory);
@@ -296,10 +297,14 @@ contract Coinflip is Ownable, ReentrancyGuard {
         return playerWinnings[msg.sender];
     }
 
-    function fundContract(uint256 amount) public onlyOwner {
-        contractBalance = contractBalance.add(amount);
-        IERC20(flipTokenAddress).safeTransferFrom(owner(), address(this), amount);
-    }
+function fundContract(uint256 amount) public {
+    // Ensure the sender has approved the contract to handle the specified amount of tokens
+    IERC20(flipTokenAddress).safeTransferFrom(msg.sender, address(this), amount);
+    // Optionally, update the contract balance 
+    contractBalance = contractBalance.add(amount);
+    // Emit an event to log funding actions (transparency)
+    emit Funded(msg.sender, amount);
+}
 
     function setToken(address _tokenAddress) public onlyOwner {
         flipTokenAddress = _tokenAddress;
