@@ -11,7 +11,7 @@ Interface:
 IERC20: Interface for ERC20 token functions.
 Contract Functionality:
 
-doGokli: Main function for token distribution.
+doOKPowerSend: Main function for token distribution.
 Accepts an ERC20 token address, an array of recipient addresses, and an array of token values to send to each address.
 Loops through the recipient addresses and sends the corresponding token value to each address.
 The function is external, allowing anyone to call it and trigger the token distribution.
@@ -19,8 +19,8 @@ Interacting with the Contract:
 To distribute tokens using the Gokli contract, you would follow these steps:
 
 Deploy the Gokli contract, passing the ERC20 token address as a constructor argument.
-Call the doGokli function, providing the ERC20 token instance, an array of recipient addresses, and an array of token values to distribute.
-Ensure that the caller of the doGokli function has approved the Gokli contract to transfer tokens on its behalf by calling approve on the ERC20 token contract.
+Call the doOKPowerSend function, providing the ERC20 token instance, an array of recipient addresses, and an array of token values to distribute.
+Ensure that the caller of the doOKPowerSend function has approved the Gokli contract to transfer tokens on its behalf by calling approve on the ERC20 token contract.
 Variables for Frontend Implementation:
 To implement a frontend for interacting with this contract, you would need to provide input fields for the following:
 

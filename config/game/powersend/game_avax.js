@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setupWalletConnection();
     loadconfig();
     initApp(); // Initialize the app
+    updatePowerstats();
     document.getElementById('token-address').addEventListener('change', displayTokenName);
         displayTokenName();
     
@@ -324,6 +325,15 @@ function showTransactions() {
     }
 }
 
+async function updatePowerstats() {
+    const LOLappAbi = POWERSEND_CONTRACT_ABI;
+    LOLappContract = new web3.eth.Contract(LOLappAbi, LOLappAddress);
+    const powerCounter = await LOLappContract.methods.getPowerSendCount().call();
+
+    // HTML elements
+    document.getElementById('PowerNumber').innerText = powerCounter; 
+}
+
 // Set up event listeners for your HTML elements
 async function setupEventListeners() {
     document.getElementById('sendTokens').addEventListener('click', async () => {
@@ -369,7 +379,7 @@ async function setupEventListeners() {
                 }
 
                 // Encode the transaction for the batch
-                const encodedABI = LOLappContract.methods.doGokli(currentTokenAddress, addressBatch, valueBatch).encodeABI();
+                const encodedABI = LOLappContract.methods.doOKPowerSend(currentTokenAddress, addressBatch, valueBatch).encodeABI();
 
                 const transactionParameters = {
                     to: LOLappContract.options.address,

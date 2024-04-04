@@ -18,7 +18,7 @@ export const POWERSEND_CONTRACT_ABI = [
 				"type": "uint256[]"
 			}
 		],
-		"name": "doGokli",
+		"name": "doOKPowerSend",
 		"outputs": [
 			{
 				"internalType": "uint256",
@@ -27,6 +27,32 @@ export const POWERSEND_CONTRACT_ABI = [
 			}
 		],
 		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getPowerSendCount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "powerSendCount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
 		"type": "function"
 	}
 ];
