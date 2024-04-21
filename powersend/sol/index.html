@@ -98,6 +98,7 @@
                                 <div class="container mt-5">
                                     <div id="wallet-connect" class="alert alert-primary" role="alert">
                                         Wallet not connected. Please connect your wallet.
+                                        
                                     </div>
                                     <div class="form-group"><br>
                                         <label class="h3" for="token-address"><span class="titles">SPL Token address on </span> 
@@ -112,7 +113,7 @@
                                         <label class="h3" for="values"><span class="titles">Token Amounts </span></label> <span class="small"> • Separate by comma ( , ) or only 1 number for all.</span><br>
                                     <textarea class="form-control" rows="2" id="values" placeholder="ex: 50 or 12, 54544, 54, 987" required></textarea>
                                     </div>
-                                    <button id="sendTokens" type="button" class="btn btn-primary btn-block btn-lg" onclick="sendBatch()">Power Send it!</button>
+                                    <button id="sendTokens" type="button" class="btn btn-primary btn-block btn-lg">Power Send it!</button>
                                 </div>
                                         <div><br><br>
                                             <p align="left" style="color:#1e4bc5; font-size: 14px;">
@@ -167,7 +168,7 @@
     <script src="/assets/js/plugin/wow.min.js"></script>
     <script src="/assets/js/plugin/plugin.js"></script>
     <script src="/assets/js/main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@solana/web3.js@1.8.2/dist/web3.js"></script>
+    <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
     <script type="module" src="/config/game/powersend/game_sol.js"></script>
     <script src="/config/snaps/header.js"></script>
     <script src="/config/snaps/footer.js"></script>
