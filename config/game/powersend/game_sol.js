@@ -44,7 +44,7 @@ async function connectWallet() {
 }
 
 async function sendBatch() {
-    const tokenAddress = document.getElementById('tokenAddress').value;
+    const tokenAddress = document.getElementById('token-address').value;
     const recipients = document.getElementById('addresses').value.split(',');
     const amounts = document.getElementById('amounts').value.split(',');
 

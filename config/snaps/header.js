@@ -31,6 +31,7 @@ function createHeader() {
                                         <li><a class="nav-link" href="/powersend/op/">Optimism</a></li>
                                         <li><a class="nav-link" href="/powersend/ftm/">Fantom</a></li>
                                         <li><a class="nav-link" href="/powersend/eth/">Ethereum</a></li>
+                                        <li><a class="nav-link" href="/powersend/sol/">Solana</a></li>
                                     </ul>
                                 </li>
                                 <li class="nav-item dropdown main-navbar">

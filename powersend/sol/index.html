@@ -90,33 +90,31 @@
                             <div class="section-text text-center">
                                 <h3>Share the Tokens! <br>Push crypto forward!</h3>
                                 <p class="uniswap">
-                                Buy Okcash [OK] on <a class="unilink" href="https://app.uniswap.org/swap?outputCurrency=0xd3Ac016b1B8C80EeAdDe4D186A9138C9324e4189&inputCurrency=0x9702230A8Ea53601f5cD2dc00fDBc13d4dF4A8c7" target="_blank">Uniswap🦄</a></p>
-                                <span class="ticketinfo"> The Best Power Send App for Multi-chain Tokens</span><br>
-                                <div style="color: #00ffa2;">PowerSend # <span style="color: #00ffa2" id="PowerNumber"></span></div>
-
+                                Buy Okcash [OK] on <a class="unilink" href="https://jup.ag/swap/SOL-HvPrYvgJiBtwUC7H4bi8L5bqnirFPWc2J9NdVy6UFiZm" target="_blank">JUP</a></p>
+                                <span class="ticketinfo"> The Best Power Send App for Multi-chain Tokens</span>
+                                
                             </div>
                             <section id="lottery-info">
                                 <div class="container mt-5">
-                                    <h1 class="mb-4">Solana SPL Batch Sender</h1>
                                     <div id="wallet-connect" class="alert alert-primary" role="alert">
                                         Wallet not connected. Please connect your wallet.
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="tokenAddress" class="form-label">SPL Token Address:</label>
-                                        <input type="text" class="form-control" id="tokenAddress" required>
+                                    <div class="form-group"><br>
+                                        <label class="h3" for="token-address"><span class="titles">SPL Token address on </span> 
+                                            <span class="CHAIN">Solana</span></label><br>
+                                            <input class="form-control" id="token-address" value="HvPrYvgJiBtwUC7H4bi8L5bqnirFPWc2J9NdVy6UFiZm" required/>
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="addresses" class="form-label">Recipient Addresses (comma separated):</label>
-                                        <textarea class="form-control" id="addresses" rows="3" placeholder="ex: 43p8GWHxSjo3Eku8TdnbkxiqC9krthTYRjh6437F45u, 95sdhKfddrTTdnbkxiqC9kBhvEjPVs8H6q9xMyx, e5nnDtjkd9NMRtdbb54uhdnDTjhSdb5fhjscCX" required></textarea>
+                                    <div class="form-group"><br>
+                                        <label class="h3" for="addresses"><span class="titles">Receivers </span></label> <span class="small"> • Separate by comma ( , )</span><br>
+                                        <textarea class="form-control" id="addresses" rows="10" placeholder="ex: 43p8GWHxSjo3Eku8TdnbkxiqC9krthTYRjh6437F45u, 95sdhKfddrTTdnbkxiqC9kBhvEjPVs8H6q9xMyx, e5nnDtjkd9NMRtdbb54uhdnDTjhSdb5fhjscCX" required></textarea>
                                     </div>
-                                    <div class="mb-3">
-                                        <label class="h3" for="values">Token Amounts</label>
-    <span class="small"> • Enter a single amount or separate amounts by comma (,)</span>
-    <textarea class="form-control" rows="2" id="values" placeholder="ex: 50 or 12, 54544, 54, 987" required></textarea>
+                                    <div class="form-group"><br>
+                                        <label class="h3" for="values"><span class="titles">Token Amounts </span></label> <span class="small"> • Separate by comma ( , ) or only 1 number for all.</span><br>
+                                    <textarea class="form-control" rows="2" id="values" placeholder="ex: 50 or 12, 54544, 54, 987" required></textarea>
                                     </div>
-                                    <button class="btn btn-primary" onclick="sendBatch()">Send Tokens</button>
+                                    <button id="sendTokens" type="button" class="btn btn-primary btn-block btn-lg" onclick="sendBatch()">Power Send it!</button>
                                 </div>
-                                        <div>
+                                        <div><br><br>
                                             <p align="left" style="color:#1e4bc5; font-size: 14px;">
                                                 <strong>Features and How It Works:</strong><br>
                                                 - Tailored for the Solana network, this platform enables users to efficiently and affordably batch multiple transactions of any SPL token.<br>
