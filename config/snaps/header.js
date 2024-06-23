@@ -24,7 +24,8 @@ function createHeader() {
                                     <a class="nav-link dropdown-toggle" href="javascript:void(0)"
                                         data-bs-toggle="dropdown" data-bs-auto-close="outside">PowerSend</a>
                                     <ul class="dropdown-menu main-menu shadow">
-                                        <li><a class="nav-link" href="/powersend/bsc/">BSC</a></li>
+                                    <li><a class="nav-link" href="/powersend/base/">BASE</a></li>
+                                    <li><a class="nav-link" href="/powersend/bsc/">BSC</a></li>
                                         <li><a class="nav-link" href="/powersend/polygon/">Polygon</a></li>
                                         <li><a class="nav-link" href="/powersend/avax/">Avalanche</a></li>
                                         <li><a class="nav-link" href="/powersend/arb/">Arbitrum</a></li>
